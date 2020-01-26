@@ -22,5 +22,13 @@ pipeline {
       }
     }
 
+    stage('Deliver') {
+      steps {
+        sh './jenkins/scripts/deliver.sh'
+        input(message: 'Hai Finito di Testare Guagliò ?', ok: 'Si, Ho Finito')
+        sh './jenkins/scripts/kill.sh'
+      }
+    }
+
   }
 }
