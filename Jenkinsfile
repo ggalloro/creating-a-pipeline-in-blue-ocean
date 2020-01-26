@@ -14,9 +14,6 @@ pipeline {
     }
 
     stage('Test') {
-      environment {
-        CI = 'true'
-      }
       steps {
         sh './jenkins/scripts/test.sh'
       }
@@ -25,10 +22,13 @@ pipeline {
     stage('Deliver') {
       steps {
         sh './jenkins/scripts/deliver.sh'
-        input(message: 'Hai Finito di Testare Guagliò ?', ok: 'Si, Ho Finito')
+        input(message: 'Hai Finito di Testare GuagliÃ² ?', ok: 'Si, Ho Finito')
         sh './jenkins/scripts/kill.sh'
       }
     }
 
+  }
+  environment {
+    CI = 'true'
   }
 }
